@@ -56,7 +56,11 @@ public class MyLinkedList<E> implements MyList{
     public boolean remove(Object item) {
         return false;
     }
-
+    /**
+     * @function remove удаляет объект из LinkedList
+     * @param index индекст элемента для удаления
+     * @return boolean
+     * **/
     @Override
     public Object remove(int index) {
         checkIndex(index);
