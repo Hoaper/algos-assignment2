@@ -89,7 +89,7 @@ public class MyArrayList<T> implements MyList {
     /**
      * @function remove удаляет объект из массива
      * @param index индекст элемента для удаления
-     * @return boolean
+     * @return Object
      * **/
     @Override
     public Object remove(int index) {
