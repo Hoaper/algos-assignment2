@@ -6,7 +6,8 @@ public class MyLinkedList<E> implements MyList{
         Node next;
         public Node(E v) {
             val = v;
-
+            previous = null;
+            next = null;
         }
     }
 
@@ -31,7 +32,15 @@ public class MyLinkedList<E> implements MyList{
 
     @Override
     public void add(Object item) {
-
+        Node<E> node = new Node<>((E) item);
+        if (size == 0) {
+            this.head = node;
+        } else {
+            node.previous = this.tail;
+            this.tail.next = node;
+        }
+        this.tail = node;
+        size++;
     }
 
     @Override
