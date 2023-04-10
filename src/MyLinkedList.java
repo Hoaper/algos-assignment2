@@ -28,10 +28,18 @@ public class MyLinkedList<E> implements MyList{
     public int size() {
         return this.size;
     }
-
+    /**
+     * @function contains true если Object o в LinkedList
+     * @param o объект поиска
+     * @return boolean
+     * **/
     @Override
     public boolean contains(Object o) {
-        return false;
+        Node<E> nextNode = this.head;
+        while (!nextNode.equals(null)) {
+            if (this.head.val.equals(o)) return true;
+            nextNode = nextNode.next;
+        } return false;
     }
     /**
      * @function add добавляет объект в LinkedList
