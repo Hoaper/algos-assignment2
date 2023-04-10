@@ -1,5 +1,5 @@
 public class MyLinkedList<E> implements MyList{
-
+    private MyArrayList elements = new MyArrayList<E>();
     private class Node<E> {
         E val;
         Node previous;
@@ -10,12 +10,9 @@ public class MyLinkedList<E> implements MyList{
             next = null;
         }
     }
-
     private Node<E> head;
-
     private Node<E> tail;
     private int size;
-
     MyLinkedList() {
         size = 0;
     }
@@ -35,11 +32,7 @@ public class MyLinkedList<E> implements MyList{
      * **/
     @Override
     public boolean contains(Object o) {
-        Node<E> nextNode = this.head;
-        while (!nextNode.equals(null)) {
-            if (this.head.val.equals(o)) return true;
-            nextNode = nextNode.next;
-        } return false;
+        return (indexOf(o) != -1 ? true : false);
     }
     /**
      * @function add добавляет объект в LinkedList
@@ -56,6 +49,19 @@ public class MyLinkedList<E> implements MyList{
             this.tail.next = node;
         }
         this.tail = node;
+        elements.add(item);
+        size++;
+    }
+    public void add(Object item, boolean notSave) {
+        Node<E> node = new Node<>((E) item);
+        if (size == 0) {
+            this.head = node;
+        } else {
+            node.previous = this.tail;
+            this.tail.next = node;
+        }
+        this.tail = node;
+        if (notSave) elements.add(item);
         size++;
     }
     /**
@@ -66,6 +72,7 @@ public class MyLinkedList<E> implements MyList{
      * **/
     @Override
     public void add(Object item, int index) {
+        checkIndex(index);
         Node oldNode = getNodeByIndex(index);
         Node node = new Node<E>((E) item);
         if (this.head.equals(oldNode)) {
@@ -83,11 +90,23 @@ public class MyLinkedList<E> implements MyList{
             oldNode.previous.next = node;
             oldNode.previous = node;
         }
+        elements.add(item);
         size++;
     }
-
+    /**
+     * @function remove удаляет объект из LinkedList
+     * @param item объект удаления
+     * @return boolean
+     * **/
     @Override
     public boolean remove(Object item) {
+        int objIndex = indexOf(item);
+        if (objIndex >= 0) {
+            remove(objIndex);
+            size--;
+            elements.remove(item);
+            return true;
+        }
         return false;
     }
     /**
@@ -112,7 +131,7 @@ public class MyLinkedList<E> implements MyList{
             node.previous.next = node.next;
             node.next.previous = node.previous;
         }
-
+        elements.remove(index);
         this.size--;
         return node.val;
 
@@ -138,21 +157,62 @@ public class MyLinkedList<E> implements MyList{
         checkIndex(index);
         return getNodeByIndex(index).val;
     }
-
+    /**
+     * @function indexOf возвращает индекс первого вхождения объекта
+     * @param o объект для поиска
+     * @return int
+     * **/
     @Override
     public int indexOf(Object o) {
-        return 0;
+        int i = 0;
+        Node<E> nextNode = this.head;
+        while (!nextNode.equals(null)) {
+            if (this.head.val.equals(o)) return i;
+            nextNode = nextNode.next;
+            i++;
+        }
+        return -1;
     }
-
+    /**
+     * @function lastIndexOf возвращает индекс последнего вхождения объекта в LinkedList
+     * @param o объект для поиска
+     * @return int
+     * **/
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        int i = size()-1;
+        Node<E> node = this.tail;
+        while (i >= 0) {
+            if (node.equals(o)) return i;
+            node = this.tail.previous;
+            i--;
+        }
+        return -1;
     }
-
+    /**
+     * @function sort сортирует LinkedList (bubble sort, O(n^2))
+     * @noparam
+     * @return void
+     * **/
     @Override
     public void sort() {
+        try{
+            Integer.valueOf((int) this.get(0));
+        } catch (ClassCastException e) {
+            return;
+        }
+        elements.sort();
+        this.clear();
+        for (int i = 0; i < elements.size(); i++) {
+            this.add(elements.get(i), false);
+        }
 
     }
+    /**
+     * @function getNodeByIndex возвращает элемент по его индексу
+     * @param index
+     * @return Node
+     * **/
     private Node getNodeByIndex(int index) {
         checkIndex(index);
         Node toSearch;
@@ -163,6 +223,11 @@ public class MyLinkedList<E> implements MyList{
         }
         return toSearch;
     }
+    /**
+     * @function checkIndex проверяет индекс на его валидность
+     * @param index
+     * @return void
+     * **/
     private void checkIndex(int index){
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
