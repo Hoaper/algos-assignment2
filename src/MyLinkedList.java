@@ -59,7 +59,7 @@ public class MyLinkedList<E> implements MyList{
     /**
      * @function remove удаляет объект из LinkedList
      * @param index индекст элемента для удаления
-     * @return boolean
+     * @return Object
      * **/
     @Override
     public Object remove(int index) {
