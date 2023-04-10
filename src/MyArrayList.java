@@ -36,7 +36,7 @@ public class MyArrayList<T> implements MyList {
     /**
      * @function contains true если Object o в массиве
      * @param o объект поиска
-     * @return int
+     * @return boolean
      * **/
     @Override
     public boolean contains(Object o) {
