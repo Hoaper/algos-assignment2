@@ -66,7 +66,11 @@ public class MyLinkedList<E> implements MyList{
     public void clear() {
 
     }
-
+    /**
+     * @function get возвращает объект из LinkedList под его индексом
+     * @param index индекс объекта
+     * @return E
+     * **/
     @Override
     public Object get(int index) {
         Node toSearch;
@@ -75,7 +79,7 @@ public class MyLinkedList<E> implements MyList{
             toSearch = toSearch.next;
             index--;
         }
-        return (E) toSearch.val;
+        return toSearch.val;
 
 
 
