@@ -1,12 +1,20 @@
 public class MyArrayList<T> implements MyList {
     private T[] arr;
     private int size;
-
+    /**
+     * @function constructor
+     * @noparam
+     * @return void
+     **/
     MyArrayList(){
         this.arr = (T[]) new Object[5];
         this.size = 0;
     }
-
+    /**
+     * @function increaseBufferIfNeeded увеличиваем буфер массива
+     * @noparams
+     * @return void
+     * **/
     public void increaseBufferIfNeeded(){
         if(size == arr.length){
             T[] newArr = (T[]) new Object[arr.length*2];
@@ -16,10 +24,20 @@ public class MyArrayList<T> implements MyList {
             arr = newArr;
         }
     }
+    /**
+     * @function size выдает длину массива
+     * @noparams
+     * @return int
+     * **/
     @Override
     public int size() {
         return this.size;
     }
+    /**
+     * @function contains true если Object o в массиве
+     * @param o объект поиска
+     * @return int
+     * **/
     @Override
     public boolean contains(Object o) {
         for(T element : arr) {
@@ -27,11 +45,22 @@ public class MyArrayList<T> implements MyList {
         }
         return false;
     }
+    /**
+     * @function add добавляет объект в массив
+     * @param item объект для добавления
+     * @return void
+     * **/
     @Override
     public void add(Object item) {
         increaseBufferIfNeeded();
         arr[size++] = (T) item;
     }
+    /**
+     * @function add true если Object o в массиве
+     * @param item объект для добавления
+     * @param index индекс куда нужно добавить item
+     * @return void
+     * **/
     @Override
     public void add(Object item, int index) {
         checkIndex(index);
@@ -42,7 +71,12 @@ public class MyArrayList<T> implements MyList {
         arr[index] = (T) item;
         size++;
     }
-    // 0(n^2)
+    /**
+     * @function remove удаляет объект из массива
+     * @param item объект удаления
+     * @return boolean
+     * **/
+    // Complexity: 0(n^2)
     @Override
     public boolean remove(Object item) {
         int index = indexOf(item);
@@ -52,7 +86,11 @@ public class MyArrayList<T> implements MyList {
         }
         return false;
     }
-
+    /**
+     * @function remove удаляет объект из массива
+     * @param index индекст элемента для удаления
+     * @return boolean
+     * **/
     @Override
     public Object remove(int index) {
         checkIndex(index);
@@ -63,18 +101,30 @@ public class MyArrayList<T> implements MyList {
         this.size--;
         return temporary;
     }
-
+    /**
+     * @function clear очищает массив
+     * @noparam
+     * @return void
+     * **/
     public void clear(){
         this.arr = (T[]) new Object[5];
         this.size = 0;
     }
-
+    /**
+     * @function get возвращает объект из массива под его индексом
+     * @param index индекс объекта
+     * @return Object
+     * **/
     @Override
     public Object get(int index) {
         checkIndex(index);
         return arr[index];
     }
-
+    /**
+     * @function indexOf возвращает индекс первого вхождения объекта
+     * @param o объект для поиска
+     * @return int
+     * **/
     @Override
     public int indexOf(Object o) {
         for (int i = 0; i < arr.length; i++) {
@@ -84,13 +134,22 @@ public class MyArrayList<T> implements MyList {
         }
         return -1;
     }
-
+    /**
+     * @function lastIndexOf возвращает индекс последнего вхождения объекта в массив
+     * @param o объект для поиска
+     * @return int
+     * **/
     @Override
     public int lastIndexOf(Object o) {
         int index = -1;
         for (int i = 0; i < arr.length; i++) if (arr[i].equals((T) o) && i > index) index = i;
         return index;
     }
+    /**
+     * @function sort сортирует массив (bubble sort, O(n^2))
+     * @noparam
+     * @return void
+     * **/
     @Override
     public void sort() {
         for(int i = 0; i < size; i++) {
@@ -103,6 +162,11 @@ public class MyArrayList<T> implements MyList {
             }
         }
     }
+    /**
+     * @function checkIndex проверяет индекс на его валидность в рамках структуры данных
+     * @param index индекс
+     * @return void
+     * **/
     private void checkIndex(int index){
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
