@@ -152,6 +152,7 @@ public class MyArrayList<T> implements MyList {
      * **/
     @Override
     public void sort() {
+        if (this.getClass().getTypeName() != "Integer") return;
         for(int i = 0; i < size; i++) {
             for (int j = i; j < size; j++) {
                 if ((int) arr[j] < (int) arr[i]) {
