@@ -83,7 +83,11 @@ public class MyLinkedList<E> implements MyList{
         return node.val;
 
     }
-
+    /**
+     * @function clear очищает LinkedList
+     * @noparam
+     * @return void
+     * **/
     @Override
     public void clear() {
         this.head = null;
