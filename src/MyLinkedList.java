@@ -29,7 +29,11 @@ public class MyLinkedList<E> implements MyList{
     public boolean contains(Object o) {
         return false;
     }
-
+    /**
+     * @function add добавляет объект в LinkedList
+     * @param item объект для добавления
+     * @return void
+     * **/
     @Override
     public void add(Object item) {
         Node<E> node = new Node<>((E) item);
