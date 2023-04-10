@@ -69,7 +69,16 @@ public class MyLinkedList<E> implements MyList{
 
     @Override
     public Object get(int index) {
-        return null;
+        Node toSearch;
+        toSearch = this.head;
+        while (index != 0) {
+            toSearch = toSearch.next;
+            index--;
+        }
+        return (E) toSearch.val;
+
+
+
     }
 
     @Override
