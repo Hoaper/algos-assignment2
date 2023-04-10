@@ -59,7 +59,11 @@ public class MyLinkedList<E> implements MyList{
 
     @Override
     public Object remove(int index) {
-        return null;
+        Node toSearch;
+        while (index != 0) {
+            toSearch = toSearch.next;
+            index--;
+        }
     }
 
     @Override
@@ -73,16 +77,8 @@ public class MyLinkedList<E> implements MyList{
      * **/
     @Override
     public Object get(int index) {
-        Node toSearch;
-        toSearch = this.head;
-        while (index != 0) {
-            toSearch = toSearch.next;
-            index--;
-        }
+
         return toSearch.val;
-
-
-
     }
 
     @Override
@@ -98,5 +94,14 @@ public class MyLinkedList<E> implements MyList{
     @Override
     public void sort() {
 
+    }
+    private Node findIndexedNode(int index) {
+        Node toSearch;
+        toSearch = this.head;
+        while (index != 0) {
+            toSearch = toSearch.next;
+            index--;
+        }
+        return toSearch;
     }
 }
