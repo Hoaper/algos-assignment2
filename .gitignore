@@ -1,10 +1,11 @@
 ### IntelliJ IDEA ###
 out/
 out/*
-!**/src/main/**/out/
-!**/src/test/**/out/
 .idea/
-.idea/*
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
 Assignment2.iml
 
 ### Eclipse ###
