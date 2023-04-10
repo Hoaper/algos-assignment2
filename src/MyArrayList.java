@@ -56,7 +56,7 @@ public class MyArrayList<T> implements MyList {
         arr[size++] = (T) item;
     }
     /**
-     * @function add true если Object o в массиве
+     * @function add добавляет объект на определенный индекс
      * @param item объект для добавления
      * @param index индекс куда нужно добавить item
      * @return void
