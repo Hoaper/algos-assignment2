@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MyArrayList<T> implements MyList {
     private T[] arr;
     private int size;
@@ -176,5 +178,11 @@ public class MyArrayList<T> implements MyList {
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(arr);
+
     }
 }
