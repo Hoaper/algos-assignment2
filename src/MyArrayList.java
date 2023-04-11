@@ -65,7 +65,7 @@ public class MyArrayList<T> implements MyList {
      * **/
     @Override
     public void add(Object item, int index) {
-        checkIndex(index);
+        if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         increaseBufferIfNeeded();
         for(int i = size; i>index; i--) {
             arr[i] = arr[i-1];
