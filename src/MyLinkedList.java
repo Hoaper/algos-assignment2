@@ -72,7 +72,7 @@ public class MyLinkedList<E> implements MyList{
      * **/
     @Override
     public void add(Object item, int index) {
-        checkIndex(index);
+        if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         Node oldNode = getNodeByIndex(index);
         Node node = new Node<E>((E) item);
         if (this.head.equals(oldNode)) {

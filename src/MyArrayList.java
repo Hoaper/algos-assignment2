@@ -97,7 +97,7 @@ public class MyArrayList<T> implements MyList {
     public Object remove(int index) {
         checkIndex(index);
         T temporary = this.arr[index];
-        for(int i= index + 1; i<size; i++){
+        for(int i= index + 1; i<=size; i++){
             arr[i-1] = arr[i];
         }
         this.size--;
