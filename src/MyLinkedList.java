@@ -41,19 +41,13 @@ public class MyLinkedList<E> implements MyList{
      * **/
     @Override
     public void add(Object item) {
-        Node<E> node = new Node<>((E) item);
-        if (size == 0) {
-            this.head = node;
-        } else {
-            node.previous = this.tail;
-            this.tail.next = node;
-        }
-        this.tail = node;
+        createNode((E) item);
         elements.add(item);
         size++;
     }
-    public void add(Object item, boolean notSave) {
-        Node<E> node = new Node<>((E) item);
+
+    private void createNode(E item) {
+        Node<E> node = new Node<>(item);
         if (size == 0) {
             this.head = node;
         } else {
@@ -61,6 +55,10 @@ public class MyLinkedList<E> implements MyList{
             this.tail.next = node;
         }
         this.tail = node;
+    }
+
+    public void add(Object item, boolean notSave) {
+        createNode((E) item);
         if (notSave) elements.add(item);
         size++;
     }
