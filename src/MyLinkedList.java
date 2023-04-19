@@ -88,7 +88,7 @@ public class MyLinkedList<E> implements MyList{
             oldNode.previous.next = node;
             oldNode.previous = node;
         }
-        elements.add(item);
+        elements.add(item, index);
         size++;
     }
     /**
@@ -102,7 +102,7 @@ public class MyLinkedList<E> implements MyList{
         if (objIndex >= 0) {
             remove(objIndex);
             size--;
-            elements.remove(item);
+            elements.remove(objIndex);
             return true;
         }
         return false;
@@ -164,7 +164,7 @@ public class MyLinkedList<E> implements MyList{
     public int indexOf(Object o) {
         int i = 0;
         Node<E> nextNode = this.head;
-        while (!nextNode.equals(null)) {
+        while (nextNode != null) {
             if (this.head.val.equals(o)) return i;
             nextNode = nextNode.next;
             i++;
@@ -230,5 +230,16 @@ public class MyLinkedList<E> implements MyList{
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    @Override
+    public String toString() {
+        String out = "[";
+        Node<E> nextNode = this.head;
+        while (nextNode != null) {
+            out += nextNode.val + " ";
+            nextNode = nextNode.next;
+        }
+        return out + "]";
     }
 }
