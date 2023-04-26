@@ -19,7 +19,7 @@ public class MyArrayList<T> implements MyList {
      * **/
     public void increaseBufferIfNeeded(){
         if(size == arr.length){
-            T[] newArr = (T[]) new Object[arr.length*2];
+            T[] newArr = (T[]) new Object[arr.length*5];
             for(int i=0; i< arr.length; i++){
                 newArr[i]=arr[i];
             }
@@ -183,6 +183,22 @@ public class MyArrayList<T> implements MyList {
     @Override
     public String toString() {
         return Arrays.toString(arr);
+    }
 
+    public void addAllByIndex(T[] elements, int index) {
+        increaseBufferIfNeeded();
+        T[] left = (T[]) new Object[arr.length+elements.length];
+        for (int i = 0; i < index; i++) {
+            left[i] = arr[i];
+        }
+        int j = 0;
+        for (int i = index; i < index + elements.length; i++) {
+            left[i] = (T) elements[j++];
+        }
+        for (int i = index; i < size; i++) {
+            left[++j] = arr[index];
+        }
+        this.size += elements.length;
+        this.arr = left;
     }
 }
