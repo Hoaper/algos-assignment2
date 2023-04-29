@@ -1,5 +1,215 @@
 # Assignment2 Documentation
 
+### MyArrayListQueue
+### ➕ enqueue
+**Description**: Adds an element to the back of the queue.
+```java
+public void enqueue(T element) {
+    myArrayList.add(element);
+}
+``` 
+
+### ➖ dequeue
+**Description**: Remove elements from the front of the queue.
+```java
+public T dequeue() {
+    return (T) myArrayList.remove(0);
+}
+``` 
+
+### 🔍 peek
+**Description**: Returns the element at the front of the queue without removing it.
+```java
+public T peek() throws NoSuchFieldException {
+    isEmptyThrowException();
+    return (T) myArrayList.get(0);
+}
+``` 
+
+### 📈 size
+**Description**: Returns the number of elements in the queue.
+```java
+public int size() {
+    return myArrayList.size();
+}
+``` 
+
+### 🚨 isEmptyThrowException
+**Description**: Throws a NoSuchFieldException if the queue is empty.
+```java
+private void isEmptyThrowException() throws NoSuchFieldException {
+    if (isEmpty()) {
+        throw new NoSuchFieldException();
+    }
+}
+``` 
+
+### 🤔 isEmpty
+**Description**: Returns true if the queue is empty, false otherwise.
+```java
+public boolean isEmpty() {
+    return this.size() == 0;
+}
+``` 
+
+### MyArrayListQueue
+### ➕ enqueue
+**Description**: Adds an element to the back of the queue.
+```java
+public void enqueue(T element) {
+    myLinkedList.add(element);
+}
+``` 
+
+### ➖ dequeue
+**Description**: Remove elements from the front of the queue.
+```java
+public T dequeue() {
+    return (T) myLinkedList.remove(0);
+}
+``` 
+
+### 🔍 peek
+**Description**: Returns the element at the front of the queue without removing it.
+```java
+public T peek() {
+    isEmptyThrowException();
+    return (T) myLinkedList.get(0);
+}
+``` 
+
+### 📈 size
+**Description**: Returns the number of elements in the queue.
+```java
+public int size() {
+    return myLinkedList.size();
+}
+``` 
+
+### 🚨 isEmptyThrowException
+**Description**: Throws a NoSuchElementException if the queue is empty.
+```java
+private void isEmptyThrowException() {
+    if (isEmpty()) {
+        throw new NoSuchElementException();
+    }
+}
+``` 
+
+### 🤔 isEmpty
+**Description**: Returns true if the queue is empty, false otherwise.
+```java
+public boolean isEmpty() {
+    return this.size() == 0;
+}
+```
+
+### MyLinkedListStack
+### 🔝 push
+**Description**: Adds an element to the top of the stack.
+```java
+public void push(T element) {
+    myLinkedList.add(element, 0);
+}
+``` 
+
+### 🔄 pop
+**Description**: Removes and returns the element at the top of the stack.
+```java
+public T pop() {
+    isEmptyThrowException();
+    return (T) myLinkedList.remove(0);
+}
+``` 
+
+### 👀 peek
+**Description**: Returns the element at the top of the stack without removing it.
+```java
+public T peek() {
+    isEmptyThrowException();
+    return (T) myLinkedList.get(0);
+}
+``` 
+
+### 📏 size
+**Description**: Returns the number of elements in the stack.
+```java
+public int size() {
+    return myLinkedList.size();
+}
+``` 
+
+### ✅ isEmpty
+**Description**: Returns true if the stack is empty, false otherwise.
+```java
+public boolean isEmpty() {
+    return this.size() == 0;
+}
+``` 
+
+### 🛑 isEmptyThrowException
+**Description**: Throws an EmptyStackException if the stack is empty.
+```java
+private void isEmptyThrowException() {
+    if (isEmpty()) {
+        throw new EmptyStackException();
+    }
+}
+```
+
+### MyArrayListStack
+### ➕ push
+**Description**: Adds an element to the top of the stack.
+```java
+public void push(T element) {
+    myArrayList.add(element, 0);
+}
+``` 
+
+### ➖ pop
+**Description**: Removes and returns the element at the top of the stack.
+```java
+public T pop() {
+    isEmptyThrowException();
+    return (T) myArrayList.remove(0);
+}
+``` 
+
+### 👀 peek
+**Description**: Returns the element at the top of the stack without removing it.
+```java
+public T peek() {
+    isEmptyThrowException();
+    return (T) myArrayList.get(0);
+}
+``` 
+
+### 🔢 size
+**Description**: Returns the number of elements in the stack.
+```java
+public int size() {
+    return myArrayList.size();
+}
+``` 
+
+### 📌 isEmptyThrowException
+**Description**: Throws an EmptyStackException if the stack is empty.
+```java
+private void isEmptyThrowException() {
+    if (isEmpty()) {
+        throw new EmptyStackException();
+    }
+}
+``` 
+
+### 🚫 isEmpty
+**Description**: Returns true if the stack is empty, false otherwise.
+```java
+public boolean isEmpty() {
+    return this.size() == 0;
+}
+```
+
 ### myArrayList.java
 
 ### ➕ increaseBufferIfNeeded
