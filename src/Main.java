@@ -4,5 +4,7 @@ public class Main {
         myLinkedListStack.push(1);
         myLinkedListStack.push(2);
         myLinkedListStack.push(3);
+        System.out.println(myLinkedListStack.pop());
+        System.out.println(myLinkedListStack.pop());
     }
 }
