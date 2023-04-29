@@ -195,7 +195,7 @@ public class MyArrayList<T> implements MyList {
         for (int i = index; i < index + elements.length; i++) {
             left[i] = (T) elements[j++];
         }
-        for (int i = index; i < size; i++) {
+        for (int i = index; i < this.size; i++) {
             left[++j] = arr[index];
         }
         this.size += elements.length;

@@ -73,7 +73,10 @@ public class MyLinkedList<E> implements MyList{
         if (index < 0 || index > size) throw new IndexOutOfBoundsException();
         Node oldNode = getNodeByIndex(index);
         Node node = new Node<E>((E) item);
-        if (this.head.equals(oldNode)) {
+        if (oldNode == null) {
+            this.head = node;
+        }
+        else if (this.head.equals(oldNode)) {
             node.next = this.head;
             this.head.previous = node;
             this.head = node;
@@ -212,6 +215,7 @@ public class MyLinkedList<E> implements MyList{
      * @return Node
      * **/
     private Node getNodeByIndex(int index) {
+        if (index == 0) return this.head;
         checkIndex(index);
         Node toSearch;
         toSearch = this.head;
@@ -230,16 +234,5 @@ public class MyLinkedList<E> implements MyList{
         if(index < 0 || index>=size){
             throw new IndexOutOfBoundsException();
         }
-    }
-
-    @Override
-    public String toString() {
-        String out = "[";
-        Node<E> nextNode = this.head;
-        while (nextNode != null) {
-            out += nextNode.val + " ";
-            nextNode = nextNode.next;
-        }
-        return out + "]";
     }
 }
